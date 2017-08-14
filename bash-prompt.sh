@@ -75,6 +75,7 @@ function __prompt_cwd {
 
     [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
   done
+  [[ $dir_sep == $first_char ]] && [[ $dir_sep == ${formatted_cwd:0:1} ]] && first_char=""
 
   printf "%s" "$first_char$formatted_cwd"
 }
