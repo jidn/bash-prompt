@@ -34,7 +34,7 @@ function __prompt_user_host {
   fi
 }
 function __prompt_git {
-  local branch
+  local branch changed
   #local branch_symbol="⎇ "  # "\u2387"
   local branch_symbol=""
 
@@ -43,7 +43,12 @@ function __prompt_git {
     if branch=$( { git symbolic-ref --short --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
       # ${parameter##word} Remove longest matching prefix pattern
       branch=${branch##*/}
-      printf "%s" "${branch_symbol}${branch:-unknown}"
+      changed=$( { git status --porcelain | cut -b 1-3; } 2>/dev/null )
+      if [ -n "$changed" ]; then
+        changed=$( echo "$changed" | grep "[ADMR]" --count )
+        [ "$changed" ] && changed="+$changed"
+      fi
+      printf "%s" "${branch_symbol}${branch:-unknown}${changed}"
       return
     fi
   fi
