@@ -46,7 +46,11 @@ function __prompt_git {
       changed=$( { git status --porcelain | cut -b 1-3; } 2>/dev/null )
       if [ -n "$changed" ]; then
         changed=$( echo "$changed" | grep "[ADMR]" --count )
-        [ "$changed" ] && changed="+$changed"
+        if [ "$changed" != "0" ]; then
+          changed="+$changed"
+        else
+          changed=""
+        fi
       fi
       printf "%s" "${branch_symbol}${branch:-unknown}${changed}"
       return
