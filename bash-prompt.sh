@@ -6,7 +6,7 @@ function __prompt_venv {
   path=( $VIRTUAL_ENV )
   set +f
   for ((idx=${#path[@]}-1; idx>=0; idx--)); do
-    [ "${path[idx]}" != "env" ] && break
+    [ "${path[idx]}" != "env" -a "${path[idx]}" != ".env" ]  && break
   done
   printf "(%s)" ${path[idx]}
 }
