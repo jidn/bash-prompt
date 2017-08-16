@@ -10,17 +10,17 @@ You can test this out on your terminal by "sourcing" it into your shell.
 
 ``` bash
     $ source ~/{path}/bash-prompt/bash-prompt.sh
-``` 
+```
 
 In your .bashrc file '~/.bashrc', source the contents of bash-prompt.sh.  If you want to push it's use to all users on the system, then make the same modifications to the system wide version of .bashrc in the /etc directory.  Just make the following addition to either file.
 
 ``` bash
     source ~/{path}/bash-prompt/bash-prompt.sh
-```    
-    
+```
+
 ## VIRTUAL_ENV
 
-I keep my virtual env in the directory of my project.  It is always called **env**, so the existing solutions showing the directory name doesn't help in keeping track of which **env** I am using.  This prompt will use the parent name of the virtual environment.  Take a look at the picture to see an example.
+I keep my virtual env in the directory of my project.  It is either called **env** or **.env**, so the existing solutions showing the directory name doesn't help in keeping track of which virtual environment I am using.  This prompt will use the parent name of the virtual environment.  Take a look at the picture to see an example.
 
 ## USER
 
@@ -28,5 +28,5 @@ I know who I am.  Most standard bash prompts show it.  This one does also.  Howe
 
 ``` bash
     local default_user=""
-    
+
     local default_user="clinton"
