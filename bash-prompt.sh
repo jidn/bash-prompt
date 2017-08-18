@@ -1,14 +1,17 @@
 function __prompt_venv {
   # https://stackoverflow.com/questions/15777996/bash-split-string-on-delimiter-assign-segments-to-array
   [[ -n "$VIRTUAL_ENV" ]] || return 1
-  local idx path IFS=/
+  local idx cwd path venv IFS=/
   set -f
   path=( $VIRTUAL_ENV )
+  cwd=( $PWD )
   set +f
   for ((idx=${#path[@]}-1; idx>=0; idx--)); do
     [ "${path[idx]}" != "env" -a "${path[idx]}" != ".env" ]  && break
   done
-  printf "(%s)" ${path[idx]}
+  venv=${path[idx]}
+#  [ $venv == ${cwd[${#cwd[*]}-1]} ] && venv="CWD"
+  printf "(%s)" $venv
 }
 function __prompt_user_host {
   # arg: see default user and host 1 or 0
