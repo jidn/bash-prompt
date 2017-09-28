@@ -107,10 +107,10 @@ function __prompt_left {
   __prompt_wrap "$(__prompt_venv)" $prefix "$suffix" && { is_empty=0; }
   
   # section user@host
-  prefix="${FG_BLUE}"
-
-  __prompt_wrap "$(__prompt_user_host 0 $default_user)" $prefix "$suffix" && { is_empty=0; }
-
+#  prefix="${FG_BLUE}"
+#
+#  __prompt_wrap "$(__prompt_user_host 0 $default_user)" $prefix "$suffix" && { is_empty=0; }
+#
   # section git
   prefix="${FG_VIOLET}"
   __prompt_wrap "$(__prompt_git)" ${prefix} "$suffix" && { is_empty=0; }
