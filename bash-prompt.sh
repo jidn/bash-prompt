@@ -7,7 +7,7 @@ function __prompt_venv {
   cwd=( $PWD )
   set +f
   for ((idx=${#path[@]}-1; idx>=0; idx--)); do
-    [ "${path[idx]}" != "env" -a "${path[idx]}" != ".env" ]  && break
+    [[ "${path[idx]}" =~ ^(env|venv)$ ]]  || break
   done
   venv=${path[idx]}
 #  [ $venv == ${cwd[${#cwd[*]}-1]} ] && venv="CWD"
